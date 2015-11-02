@@ -1,0 +1,1 @@
+{"virtualbox":{"/scripts":{"guestpath":"/scripts","hostpath":"/home/mot/puppetpostgres/puppetmaster","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/mot/puppetpostgres","disabled":false}}}

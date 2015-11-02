@@ -19,7 +19,7 @@ Vagrant.configure(2) do | global |
     {
       :name => 'nodeb',
       :addr => '192.168.33.20',
-      :data => 'puppetagent',
+      :data => './puppetagent',
     },
     {
       :name => 'nodec',

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Puppet master
-yum install puppet
+sudo yum install puppet
 puppet resource package ensure=latest
 #/etc/init.d/puppet restart
 
@@ -42,4 +42,4 @@ cat << PUPPET_CONF > /etc/puppet/puppet.conf
     # extension indicating the cache format is added automatically.
     # The default value is '$confdir/localconfig'.
     localconfig = $vardir/localconfig
-PUPPET_CONF 
+PUPPET_CONF

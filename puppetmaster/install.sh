@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Puppet master
-yum install puppet-server
-puppet resource package-server ensure=latest
+sudo yum install puppet-server
+puppet resource package ensure=latest
 #/etc/init.d/puppetmaster restart
 
 hostname master

@@ -28,7 +28,7 @@ cat << PUPPET_CONF > /etc/puppet/puppet.conf
     # Where SSL certificates are kept.
     # The default value is '$confdir/ssl'.
     ssldir = $vardir/ssl
-    server = master
+    server = puppet
 
 [agent]
     # The file in which puppetd stores a list of the classes

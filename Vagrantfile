@@ -42,7 +42,6 @@ Vagrant.configure(2) do | global |
       config.vm.synced_folder node[:data], '/scripts'
       config.vm.provision "shell",
         inline: "/vagrant/install.sh #{i+1} #{nodes.length}"
-
     end
   end
 

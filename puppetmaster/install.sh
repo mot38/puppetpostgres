@@ -12,3 +12,4 @@ cp /vagrant/puppet-control/site/profiles/files/hiera.yaml /etc/puppet/
 ln -s /usr/local/bin/r10k /usr/bin/r10k
 r10k deploy environment
 ln -s /vagrant/puppet-control /etc/puppet/environments/local
+sed -i "s/\[agent\]/\[agent\]\nenvironment = local/" /etc/puppet/puppet.conf

@@ -13,3 +13,8 @@ ln -s /usr/local/bin/r10k /usr/bin/r10k
 r10k deploy environment
 ln -s /vagrant/puppet-control /etc/puppet/environments/local
 sed -i "s/\[agent\]/\[agent\]\nenvironment = local/" /etc/puppet/puppet.conf
+cat << PUPPET_FILESERVER_CONF >> /etc/puppet/fileserver.conf
+[extra_files]
+  path /vagrant/puppet-control/site/profiles/files/
+  allow *
+PUPPET_FILESERVER_CONF

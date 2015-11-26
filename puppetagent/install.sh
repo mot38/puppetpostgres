@@ -19,6 +19,7 @@ hosting_platform: vagrant
 EOF
 
 #sed -i "s/\[agent\]/\[agent\]\nenvironment = local/" /etc/puppet/puppet.conf 
+echo "environment = local" >> /etc/puppet/puppet.conf
 
 puppet agent --test --waitforcert 10
 

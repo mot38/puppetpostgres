@@ -1,1 +1,1 @@
-{"virtualbox":{"/scripts":{"guestpath":"/scripts","hostpath":"/Users/lezlight/projects/puppetpostgres/puppetmaster","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/lezlight/projects/puppetpostgres","disabled":false}}}
+{"virtualbox":{"/scripts":{"guestpath":"/scripts","hostpath":"/Users/lezlight/projects/puppetpostgresnew/puppetmaster","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/lezlight/projects/puppetpostgresnew","disabled":false}}}

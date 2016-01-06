@@ -25,8 +25,6 @@ sleep 5
 echo -e "\n\n\tStopping the Postgres service."
 su - postgres -c "/usr/pgsql-9.4/bin/pg_ctl stop -m immediate"
 su - postgres -c "/usr/pgsql-9.4/bin/pg_ctl status"
-#systemctl stop postgresql-9.4
-#systemctl status postgresql-9.4
 echo -e "\n\n\tThe Postgres service has stopped.\n\n"
 echo -e "\n\n\tDeleting everything in the data directory.\n\n"
 rm -rf ${data_dir}*
@@ -57,7 +55,14 @@ chmod 644 ${recovery_conf}
 chown postgres:postgres ${recovery_conf}
 su - postgres -c "psql -h vip -U repmgr -c \"select pg_create_physical_replication_slot('repmgr_slot_${nodenum}');\""
 echo -e "\n\n\tRe-starting the Postgres service"
-systemctl start postgresql-9.4
+su - postgres -c "/usr/pgsql-9.4/bin/pg_ctl start"
+rm -f /var/lib/pgsql/9.4/data/recovery.done
+
+# delete all replication slots from the database on the newly reinstated slave node
+for slotname in $(su - postgres -c "psql -t -c 'select slot_name from pg_replication_slots;'") ; do
+  su - postgres -c "psql -c \" select pg_drop_replication_slot('${slotname}');\""
+done
+systemctl start repmgr
 echo -e "\n\n"
 systemctl status postgresql-9.4
 echo -e "\n\n"

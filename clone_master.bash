@@ -39,13 +39,13 @@ read x
 
 su - postgres -c "/usr/pgsql-9.4/bin/repmgr -D ${data_dir} -f /etc/repmgr/9.4/repmgr.conf --force --rsync-only -h vip -d repmgr -U repmgr --verbose standby clone"
 
-
+sleep 5
 echo -e "\n\n\tRetarting the Postgres service"
 su - postgres -c "/usr/pgsql-9.4/bin/pg_ctl start"
-
+sleep 5
 echo -e "\n\n\tReregistering the node with repmgr"
 su - postgres -c "/usr/pgsql-9.4/bin/repmgr -f /etc/repmgr/9.4/repmgr.conf --force standby register"
-
+sleep 5
 echo -e "\n\n\tRetarting the repmgr service"
 systemctl start repmgr
 

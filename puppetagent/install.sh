@@ -2,12 +2,6 @@
 
 cat << HOSTS_FILE >> /etc/hosts
 192.168.33.5 puppet puppetmaster puppet-master-91.control.net
-192.168.33.10 nodea
-192.168.33.20 nodeb
-192.168.33.30 nodec
-192.168.33.40 bart
-192.168.33.100 vip
-192.168.33.101 haproxyvip 
 HOSTS_FILE
 
 mkdir -p /etc/puppetlabs/facter/facts.d

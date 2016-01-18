@@ -1,17 +1,17 @@
 #!/bin/bash
 data_dir=/var/lib/pgsql/9.4/data/
 recovery_conf=${data_dir}recovery.conf
-cluster_show_cmd="su - postgres -c \"ssh vip  \\\"/usr/pgsql-9.4/bin/repmgr -f /etc/repmgr/9.4/repmgr.conf cluster show\\\"\""
+cluster_show_cmd="su - postgres -c \"ssh vip1  \\\"/usr/pgsql-9.4/bin/repmgr -f /etc/repmgr/9.4/repmgr.conf cluster show\\\"\""
 
 function master_node_name {
-  eval "${cluster_show_cmd}" | grep master | sed 's/^.*host=\(node[abc]\) user.*$/\1/'
+  eval "${cluster_show_cmd}" | grep master | sed 's/^.*host=\(node[abc]1\) user.*$/\1/'
 }
 
 
 case `hostname` in
-  nodea) nodenum=1 ;;
-  nodeb) nodenum=2 ;;
-  nodec) nodenum=3 ;;
+  nodea1) nodenum=1 ;;
+  nodeb1) nodenum=2 ;;
+  nodec1) nodenum=3 ;;
 esac
 
 clear
@@ -37,7 +37,7 @@ clear
 echo -en "\n\n\tNow let's add an object on the new master, then clone it to this server; press any key to initiate the clone procedure."
 read x
 
-su - postgres -c "/usr/pgsql-9.4/bin/repmgr -D ${data_dir} -f /etc/repmgr/9.4/repmgr.conf --force --rsync-only -h vip -d repmgr -U repmgr --verbose standby clone"
+su - postgres -c "/usr/pgsql-9.4/bin/repmgr -D ${data_dir} -f /etc/repmgr/9.4/repmgr.conf --force --rsync-only -h vip1 -d repmgr -U repmgr --verbose standby clone"
 
 sleep 5
 echo -e "\n\n\tRetarting the Postgres service"

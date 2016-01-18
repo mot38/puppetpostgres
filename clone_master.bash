@@ -12,6 +12,7 @@ case `hostname` in
   nodea1) nodenum=1 ;;
   nodeb1) nodenum=2 ;;
   nodec1) nodenum=3 ;;
+  noded1) nodenum=4 ;;
 esac
 
 clear

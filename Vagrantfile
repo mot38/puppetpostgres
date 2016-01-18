@@ -12,28 +12,28 @@ Vagrant.configure(2) do | global |
       :data => './puppetmaster',
     },
     {
-      :name => 'nodea',
-      :addr => '192.168.33.10',
+      :name => 'nodea1',
+      :addr => '192.168.33.15',
       :data => './puppetagent',
     },
     {
-      :name => 'nodeb',
-      :addr => '192.168.33.20',
+      :name => 'nodeb1',
+      :addr => '192.168.33.25',
       :data => './puppetagent',
     },
     {
-      :name => 'nodec',
-      :addr => '192.168.33.30',
+      :name => 'nodec1',
+      :addr => '192.168.33.35',
       :data => './puppetagent',
     },
     {
-      :name => 'noded',
-      :addr => '192.168.33.90',
+      :name => 'noded1',
+      :addr => '192.168.33.45',
       :data => './puppetagent',
     },
     {
-      :name => 'barman',
-      :addr => '192.168.33.40',
+      :name => 'barman1',
+      :addr => '192.168.33.95',
       :data => './puppetagent',
     },
   ]

@@ -15,30 +15,35 @@ Vagrant.configure(2) do | global |
       :name => 'nodea1',
       :addr => '192.168.33.15',
       :data => './puppetagent',
+      :role =>  'postgresqlha_master',
     },
     {
       :name => 'nodeb1',
       :addr => '192.168.33.25',
       :data => './puppetagent',
+      :role => 'postgresqlha_standby',
     },
     {
       :name => 'nodec1',
       :addr => '192.168.33.35',
       :data => './puppetagent',
+      :role => 'postgresqlha_standby',
     },
     {
       :name => 'noded1',
       :addr => '192.168.33.45',
       :data => './puppetagent',
+      :role => 'postgresqlha_standby',
     },
     {
       :name => 'barman1',
       :addr => '192.168.33.95',
       :data => './puppetagent',
+      :role => 'barman',
     },
   ]
 
-  nodes.each_with_index do | node, i |
+  nodes.each do | node |
     global.vm.define node[:name] do | config |
       config.vm.hostname = node[:name]
       config.vm.network :private_network,
@@ -46,7 +51,7 @@ Vagrant.configure(2) do | global |
         virtualbox_inet: true
       config.vm.synced_folder node[:data], '/scripts'
       config.vm.provision "shell",
-        inline: "/vagrant/install.sh #{i+1} #{nodes.length}"
+        inline: "/vagrant/install.sh #{node[:role]}"
     end
   end
 
